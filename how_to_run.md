@@ -1,9 +1,11 @@
-# 
+## How To Run the Application along with DB
 
-docker network create movies-mysql
+1. Create Network
+   - docker network create movies-mysql
 
-mvn clean install -Pprod
+2. Build Production Ready Application
+   - mvn clean install -Pprod
 
-docker-compose down
-
-docker-compose up -d
+3. Docker command to up and down the application
+  - docker-compose down
+  - docker-compose up -d
