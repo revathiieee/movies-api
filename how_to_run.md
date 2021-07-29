@@ -7,5 +7,5 @@
    - mvn clean install -Pprod
 
 3. Docker command to up and down the application
-  - docker-compose down
-  - docker-compose up -d
+   - docker-compose down
+   - docker-compose up -d
