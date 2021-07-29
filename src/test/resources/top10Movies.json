@@ -1,0 +1,62 @@
+[
+  {
+    "ratingId": 11,
+    "movieName": "Avatar",
+    "rating": 7.8,
+    "boxOfficeValue": "$760,507,625.00"
+  },
+  {
+    "ratingId": 8,
+    "movieName": "Toy Story 3",
+    "rating": 8.2,
+    "boxOfficeValue": "$415,004,880.00"
+  },
+  {
+    "ratingId": 18,
+    "movieName": "Up",
+    "rating": 8.2,
+    "boxOfficeValue": "$293,004,164.00"
+  },
+  {
+    "ratingId": 19,
+    "movieName": "Up in the Air",
+    "rating": 8.2,
+    "boxOfficeValue": "$293,004,164.00"
+  },
+  {
+    "ratingId": 3,
+    "movieName": "Inception",
+    "rating": 8.8,
+    "boxOfficeValue": "$292,576,195.00"
+  },
+  {
+    "ratingId": 12,
+    "movieName": "The Blind Side",
+    "rating": 7.6,
+    "boxOfficeValue": "$255,959,475.00"
+  },
+  {
+    "ratingId": 9,
+    "movieName": "True Grit",
+    "rating": 7.6,
+    "boxOfficeValue": "$171,243,005.00"
+  },
+  {
+    "ratingId": 24,
+    "movieName": "Slumdog Millionaire",
+    "rating": 8,
+    "boxOfficeValue": "$141,319,928.00"
+  },
+  {
+    "ratingId": 5,
+    "movieName": "The King's Speech",
+    "rating": 8,
+    "boxOfficeValue": "$138,797,449.00"
+  },
+  {
+    "ratingId": 20,
+    "movieName": "The Curious Case of Benjamin Button",
+    "rating": 7.8,
+    "boxOfficeValue": "$127,509,326.00"
+  }
+]

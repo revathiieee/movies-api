@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  movies-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: movies
+    container_name: movies-api
+    ports:
+      - "8080:8080"
+    networks:
+      - movies-mysql
+    restart: always
+    depends_on:
+      - moviesdb
+
+  moviesdb:
+    image: mysql:8
+    container_name: moviesdb
+    restart: always
+    networks:
+      - movies-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=test123
+      - MYSQL_DATABASE=movies
+
+networks:
+  movies-mysql:
+    external: true
