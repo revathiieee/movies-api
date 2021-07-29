@@ -1,7 +1,8 @@
-#Testing using Swagger
+## Testing using Swagger  
+
 After running hte application and browse the swagger api url
-Swagger API URL:
-http://localhost:8080/swagger-ui/index.html
+
+**Swagger API URL:** http://localhost:8080/swagger-ui/index.html
 
 1. To know the oscar winning movie
 
