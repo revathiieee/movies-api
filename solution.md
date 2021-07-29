@@ -11,5 +11,9 @@ This Rest Api is designed with Java11 and spring boot.
         - imdb rating and box office value is loaded into **tb_movie_ratings** table.
         - User given **rating** is also updated in tb_movie_ratings table.
         - Top10 **box office** movies are fetched from tb_movie_ratings table.
+   
+## Data Model Design
+
+![data_model.png](data_model.png)
   
     
