@@ -34,28 +34,33 @@ Jacoco Plugin 0.8.6 - Unit Test Coverage Plugin
 
 1. Checkout the source code
 
-
-
+   https://github.com/revathiieee/movies-api
 
 2. Build the Application (locally)
-   `mvn clean install`
+   
+   ``` mvn clean install ```
 
 3. Run the Application (locally)
-   `mvn spring-boot:run`
+   
+   ``` mvn spring-boot:run ```
 
 4. Build Test reports (locally)
-   `mvn test verify`
+   
+   ``` mvn test verify ```
 
 
 ## Screenshots
 
 ### Swagger
 
+![swagger.JPG](swagger.JPG)
 
 ### Jacoco Coverage Report
 
+![code-coverage-report.JPG](code_coverage_report.JPG)
 
 ## Author
+
 ### Revathi Kulandhaivelu
 
 ## Happy Coding!

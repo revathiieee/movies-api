@@ -2,7 +2,9 @@
 
 After running hte application and browse the swagger api url
 
-**Swagger API URL:** http://localhost:8080/swagger-ui/index.html
+**Swagger API URL:** 
+
+**http://localhost:8080/swagger-ui/index.html**
 
 1. To know the oscar winning movie
 
@@ -18,6 +20,30 @@ After running hte application and browse the swagger api url
       "rating": 0,
       "releaseDate": "string"
       }
+
+    Status Code: 200
+
+    ---------------------------------------------------
+ 
+    Request : Header : InValid API Key , movieName : Titanic 
+
+    Response:
+
+    **Supplied API Key : invalid-key is invalid**
+
+    Status Code: 400
+
+    ---------------------------------------------------
+
+   Request : Header : X-API Key , movieName : invalidMovie
+
+   Response:
+
+   **MovieName : invalidMovie does not exist.**
+
+   Status Code: 404
+   
+-------------------------------------------------------
     
 2. To give rating
 
@@ -32,6 +58,10 @@ After running hte application and browse the swagger api url
    "rating": 0,
    "ratingId": 0
    }
+   
+   Status Code: 200
+
+-------------------------------------------------------------
 
 3. To know Top 10 boxoffice movies
 
