@@ -6,6 +6,8 @@ After running hte application and browse the swagger api url
 
 **http://localhost:8080/swagger-ui/index.html**
 
+### API KEY for testing: **130feada**
+
 1. To know the oscar winning movie
 
     GET Endpoint: http://localhost:8080/api/movies/v1/bestPicture

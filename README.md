@@ -48,6 +48,15 @@ Jacoco Plugin 0.8.6 - Unit Test Coverage Plugin
    
    ``` mvn test verify ```
 
+### Others
+
+[how to test](https://github.com/revathiieee/movies-api/blob/main/how_to_test.md)
+
+[how to run](https://github.com/revathiieee/movies-api/blob/main/how_to_run.md)
+
+[solution](https://github.com/revathiieee/movies-api/blob/main/solution.md)
+
+[assumptions](https://github.com/revathiieee/movies-api/blob/main/assumptions.md)
 
 ## Screenshots
 
