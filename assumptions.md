@@ -1,4 +1,4 @@
-#Assumptions
+## Assumptions
 1. To fetch top 10 movies based box office value, I need box office value for the movies
 . I fetched the actual movie data from omdb api. Use imdb rating and box office value and load into tb_movie_ratings table.
    Hence I can use for box office and rating operations.
