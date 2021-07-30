@@ -41,7 +41,7 @@ public class SwaggerConfig {
                 "Documentation for Movie API",
                 "1.0",
                 "Terms of service for using movie app",
-                new Contact("revathik", "http://localhost:8080", "revathieee@gmail.com"),
+                new Contact("revathik", "http://localhost:8090", "revathieee@gmail.com"),
                 "MIT Licence",
                 "http://opensource.org/licences/MIT",
                 new ArrayList<>()
