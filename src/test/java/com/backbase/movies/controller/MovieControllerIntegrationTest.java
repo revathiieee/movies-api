@@ -27,6 +27,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.PUT;
 
@@ -91,6 +92,42 @@ class MovieControllerIntegrationTest {
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
         assertEquals("MovieName : invalidMovie does not exist.", responseEntity.getBody());
     }
+
+    @Test
+    void emptyMovieName() {
+
+        String URI = "/api/movies/v1/bestPicture";
+
+        httpHeaders.add("X-APIKEY", "130feada");
+        HttpEntity<?> httpEntity = new HttpEntity<>(httpHeaders);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(getCompleteEndPoint(URI)).queryParam("movieName", "");
+
+        ResponseEntity<String> responseEntity = restTemplate.exchange(builder.build().encode().toUri(), GET, httpEntity, String.class);
+
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        assertTrue(responseEntity.getBody().contains("Movie Name should not be empty"));
+    }
+
+    @Test
+    void errorUpdateRating() {
+
+        String URI = "/api/movies/v1/rating";
+
+        MultiValueMap params = new LinkedMultiValueMap();
+        params.add("movieName", "Titanic");
+        params.add("rating","12");
+
+        httpHeaders.add("X-APIKEY", "130feada");
+        HttpEntity<?> httpEntity = new HttpEntity<>(httpHeaders);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(getCompleteEndPoint(URI))
+                .queryParams(params);
+
+        ResponseEntity<String> responseEntity = restTemplate.exchange(builder.build().encode().toUri(), PUT, httpEntity, String.class);
+
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        assertTrue(responseEntity.getBody().contains("Rating should be between 1 to 10"));
+    }
+
 
     @Test
     void updateRating() throws Exception {

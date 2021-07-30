@@ -19,11 +19,17 @@ services:
     image: mysql:8
     container_name: moviesdb
     restart: always
+    volumes:
+      - mysql-data-movies:/data/db
     networks:
       - movies-mysql
     environment:
       - MYSQL_ROOT_PASSWORD=test123
       - MYSQL_DATABASE=movies
+
+volumes:
+  mysql-data-movies:
+    driver: local
 
 networks:
   movies-mysql:

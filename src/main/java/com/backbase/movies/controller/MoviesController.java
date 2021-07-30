@@ -8,10 +8,12 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.OK;
@@ -24,6 +26,7 @@ import static org.springframework.http.HttpStatus.OK;
 @RestController
 @RequestMapping("/api/movies/v1")
 @Slf4j
+@Validated
 public class MoviesController {
     /**
      * Field Movie Service
@@ -50,7 +53,7 @@ public class MoviesController {
     @GetMapping(path = "/bestPicture")
     @Operation(method = "GET", summary = "Get Movie Data", description = "To Know whether picture won Best Picture")
     public ResponseEntity<MovieResponse> getMovieData(@RequestHeader(value = "X-APIKEY") String apiKey,
-                                                      @Parameter(name = "movieName") @RequestParam(value = "movieName") String movieName)
+                                                      @Parameter(name = "movieName") @RequestParam(value = "movieName") @NotBlank(message = "Movie Name should not be empty") String movieName)
             throws MovieHttpException {
         return ResponseEntity.status(OK).body(movieService.getMovieData(apiKey, movieName));
     }
@@ -68,7 +71,7 @@ public class MoviesController {
     @Operation(method = "PUT", summary = "Update Movie Rating", description = "Give Rating for a Movie")
     public ResponseEntity<RatingResponse> updateMovieRating(@RequestHeader(value = "X-APIKEY") String apiKey,
                                                             @Parameter(name = "movieName") @RequestParam(value = "movieName") String movieName,
-                                                            @Parameter(name = "rating") @RequestParam(value = "rating") @Min(value = 1, message = "Rating should be minimum 1") @Max(value = 10, message = "Rating should not be more than 10") Double rating)
+                                                            @Parameter(name = "rating") @RequestParam(value = "rating") @Min(value = 1, message = "Rating should be minimum 1") @Max(value = 10, message = "Rating should be between 1 to 10") Double rating)
                                                             throws MovieHttpException {
         return ResponseEntity.status(OK).body(movieService.updateMovieRating(apiKey, movieName, rating));
     }
