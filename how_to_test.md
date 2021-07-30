@@ -4,13 +4,13 @@ After running hte application and browse the swagger api url
 
 **Swagger API URL:** 
 
-**http://localhost:8080/swagger-ui/index.html**
+**http://localhost:8090/swagger-ui/index.html**
 
 ### API KEY for testing: **130feada**
 
 1. To know the oscar winning movie
 
-    GET Endpoint: http://localhost:8080/api/movies/v1/bestPicture
+    GET Endpoint: http://localhost:8090/api/movies/v1/bestPicture
     
     Request : Header : X-APIKEY , movieName : Titanic 
     
@@ -49,7 +49,7 @@ After running hte application and browse the swagger api url
     
 2. To give rating
 
-   PUT Endpoint: http://localhost:8080/api/movies/v1/rating
+   PUT Endpoint: http://localhost:8090/api/movies/v1/rating
    
    Request : Header : X-APIKEY , movieName : Titanic, rating: 8.6
    
@@ -67,7 +67,7 @@ After running hte application and browse the swagger api url
 
 3. To know Top 10 boxoffice movies
 
-   GET Endpoint: http://localhost:8080/api/movies/v1/boxOffice
+   GET Endpoint: http://localhost:8090/api/movies/v1/boxOffice
    
    Response:
    {
