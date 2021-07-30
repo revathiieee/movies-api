@@ -54,7 +54,7 @@ class MovieServiceTest {
         when(omDbClient.getMovieData("123bcd", "Titanic")).thenReturn(prepareMovieResult("9.3"));
         when(movieRepository.findByMovieName("Titanic")).thenReturn(prepareMovie());
         when(movieRatingRepository.findByMovieName("Titanic")).thenReturn(prepareMovieRatings(10, 9.3));
-        when(movieRatingRepository.save(prepareMovieRatings(11, 9.3))).thenReturn(prepareMovieRatings(11, 9.3));
+        when(movieRatingRepository.save(prepareMovieRatings(10, 9.3))).thenReturn(prepareMovieRatings(10, 9.3));
 
         //Test
         MovieResponse response = movieService.getMovieData("123bcd", "Titanic");

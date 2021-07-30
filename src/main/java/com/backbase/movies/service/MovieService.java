@@ -71,7 +71,7 @@ public class MovieService {
 
         //Insert/Update Imdb Rating in Rating table
         Double rating = Double.valueOf(movieResult.getImdbRating());
-        MovieRatings ratings = addMovieRating(movieResult.getTitle(), rating, formatBoxOfficeValue(movieResult.getBoxOffice()));
+        MovieRatings ratings = addMovieRating(movieResult.getTitle(), rating, formatBoxOfficeValue(movieResult.getBoxOffice()), true);
 
         //Prepare Final Response
         return prepareMovieResponse(oscarData.getWinner(), movieResult, ratings.getRating());
@@ -90,7 +90,8 @@ public class MovieService {
         MovieResult movieResult = validateKeyAndMovie(apiKey, movieName);
         log.info("Validated Movie Rating {} with provided apiKey", movieResult.getTitle());
 
-        MovieRatings movieRatings = addMovieRating(movieResult.getTitle(), rating, formatBoxOfficeValue(movieResult.getBoxOffice()));
+        MovieRatings movieRatings
+                = addMovieRating(movieResult.getTitle(), rating, formatBoxOfficeValue(movieResult.getBoxOffice()), false);
         return prepareRatingResponse(movieRatings);
     }
 
@@ -115,20 +116,23 @@ public class MovieService {
         return Integer.valueOf(boxOffice.replaceAll("[$,]", ""));
     }
 
-    private MovieRatings addMovieRating(String title, Double rating, Integer boxOfficeValue) {
+    private MovieRatings addMovieRating(String title, Double rating, Integer boxOfficeValue, boolean imdbRating) {
         //fetch the movie
         Optional<MovieRatings> mvRating = Optional.ofNullable(movieRatingRepository.findByMovieName(title));
         MovieRatings movieRating;
 
         if (mvRating.isPresent()) {
-            //Update rating by calculating with existing and current ratings.
-            Double updatedRating = calculateRating(mvRating.get().getRating(), rating, mvRating.get().getNoOfRatings());
+
+            //Update rating by calculating with existing and current ratings only when User updates the rating.
+            rating = imdbRating ? rating : calculateRating(mvRating.get().getRating(), rating, mvRating.get().getNoOfRatings());
+            int noOfRatings = imdbRating ? mvRating.get().getNoOfRatings() : mvRating.get().getNoOfRatings() +1;
+
             movieRating = MovieRatings.builder()
                     .ratingId(mvRating.get().getRatingId())
                     .movieName(mvRating.get().getMovieName())
-                    .rating(updatedRating)
+                    .rating(rating)
                     .boxOfficeValue(boxOfficeValue)
-                    .noOfRatings(mvRating.get().getNoOfRatings() + 1).build();
+                    .noOfRatings(noOfRatings).build();
         } else {
             //update rating as current rating as its new
             movieRating = MovieRatings.builder()
